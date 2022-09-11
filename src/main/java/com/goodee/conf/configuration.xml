@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<!-- 동기화 문제에서 오류 발생할 수 있음, 이후에 바로 갱신되는 내용을 볼 수 없어서 false로 세팅 -->
+		<setting name="localCacheScope" value="STATEMENT"/>
+		<!-- 같은 세션안에서 캐싱이 일어날 경우 초기화시켜줌 -->
+		<setting name="useGeneratedKeys" value="true" />
+		<!--  -->
+		<setting name="defaultExecutorType" value="REUSE" />
+		<!-- Preparestatment를 여러번 선언하지 않고 한번 선언한 것 여러번 재활용 할 수 있음 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+	
+	<typeAliases>
+		<!-- <typeAlias alias="EmpVO" type="com.goodee.bean.EmpVO"/>  -->
+		<package name="com.goodee.vo"/>
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="org.mariadb.jdbc.Driver" />
+				<property name="url" value="jdbc:mariadb://localhost:3306/bbs2" />
+				<property name="username" value="root" />
+				<property name="password" value="1234" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="com/goodee/mapper/Mapper.xml" />
+	</mappers>
+</configuration>

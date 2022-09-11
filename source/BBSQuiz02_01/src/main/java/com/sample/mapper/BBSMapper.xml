@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.sample.dao.BBSDAO">
+	<select id="selectBBSList1" resultType="BBSOutputVO">
+		select id, category, title, owner, content, 
+		date_format(create_date, '%Y-%m-%d %T') create_date 
+		from bbs
+	</select>
+	<select id="selectBBSList2" parameterType="BBSInputVO" resultType="BBSOutputVO">
+		select id, category, title, owner, content, 
+		date_format(create_date, '%Y-%m-%d %T') create_date 
+		from bbs
+		where category = #{category}
+	</select>
+	<select id="selectBBSList3" parameterType="BBSInputVO" resultType="BBSOutputVO">
+		select id, category, title, owner, content, 
+		date_format(create_date, '%Y-%m-%d %T') create_date 
+		from bbs
+		where category = #{category}
+	</select>
+	<select id="selectBBSList4" parameterType="BBSInputVO" resultType="BBSOutputVO">
+		select id, category, title, owner, content, 
+		date_format(create_date, '%Y-%m-%d %T') create_date 
+		from bbs
+		where category = #{category}
+	</select>
+	<select id="selectAllCategoryList" resultType="String">
+		select distinct category from bbs
+	</select>
+	<select id="selectBBSList5" parameterType="BBSInputVO" resultType="BBSOutputVO">
+		select id, category, title, owner, content, 
+		date_format(create_date, '%Y-%m-%d %T') create_date 
+		from bbs
+		where date_format(create_date, '%m') in 
+		<foreach collection="months" item="mon" open="(" close=")" separator=",">
+			#{mon}
+		</foreach>
+	</select>
+	<select id="selectBBSList6" parameterType="BBSInputVO" resultType="BBSOutputVO">
+		select id, category, title, owner, content, 
+		date_format(create_date, '%Y-%m-%d %T') create_date 
+		from bbs
+		where date_format(create_date, '%m') between #{startMonth} and #{endMonth}
+	</select>
+	<select id="selectBBSList7" parameterType="BBSInputVO" resultType="BBSOutputVO">
+		select id, category, title, owner, content, 
+		date_format(create_date, '%Y-%m-%d %T') create_date 
+		from bbs
+		where date_format(create_date, '%m') = #{month}
+	</select>
+	<select id="selectBBSList8" parameterType="BBSInputVO" resultType="BBSOutputVO">
+		select id, category, title, owner, content, 
+		date_format(create_date, '%Y-%m-%d %T') create_date 
+		from bbs
+		<where>
+			<if test="owner != null">
+			and owner = #{owner}
+			</if>
+			<if test="title != null">
+			and title like #{title}
+			</if>
+			<if test="content != null">
+			and content like #{content}
+			</if>
+		</where>
+	</select>
+</mapper>
+
+
+

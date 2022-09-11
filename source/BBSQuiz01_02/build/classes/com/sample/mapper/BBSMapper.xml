@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="bbs">
+	<select id="selectBBSList1" resultType="bbsvo1">
+		select id, title, owner, content, date_format(create_date, '%Y-%m-%d %T') 
+		create_date from bbs
+	</select>
+	<select id="selectBBSList2" resultType="bbsvo1">
+		select id, title, owner, content, date_format(create_date, '%Y-%m-%d %T') 
+		create_date from bbs order by id desc
+	</select>
+	<select id="selectBBSList3" resultType="bbsvo1">
+		select id, title, owner, content, date_format(create_date, '%Y-%m-%d %T') 
+		create_date from bbs order by create_date desc
+	</select>
+	<select id="selectBBSList4" resultType="bbsvo1">
+		select id, title, owner, content, date_format(create_date, '%Y-%m-%d %T') 
+		create_date from bbs order by create_date desc
+	</select>
+	<select id="selectBBSList5" resultType="bbsvo1">
+		select id, title, owner, content, date_format(create_date, '%Y-%m-%d %T') 
+		create_date from bbs order by create_date desc
+	</select>
+	<select id="selectBBSList6" resultType="bbsvo1">
+		select id, title, owner, content, date_format(create_date, '%Y-%m-%d') 
+		create_date from bbs order by create_date desc
+	</select>
+	<select id="selectBBSList7" resultType="bbsvo2">
+		select id, title, owner, content, date_format(create_date, '%Y-%m-%d') date, 
+		date_format(create_date, '%T') time from bbs order by create_date desc
+	</select>
+	<select id="selectBBSList8" resultType="bbsvo1">
+		select id, title, owner, content, date_format(create_date, '%Y-%m-%d') 
+		create_date from bbs order by create_date desc limit 0,15
+	</select>
+	<select id="selectBBSList9" resultType="bbsvo1">
+		select id, title, owner, content, date_format(create_date, '%Y-%m-%d') 
+		create_date from bbs order by create_date desc limit 0,15
+	</select>
+	<select id="selectBBSCount" resultType="int">
+		select count(*) cnt from bbs
+	</select>
+</mapper>
+
