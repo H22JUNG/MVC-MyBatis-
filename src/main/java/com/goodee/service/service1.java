@@ -96,24 +96,24 @@ public class service1 {
 		}
 		return (arrlist != null) ? true : false;
 	}
-	
+
 	//-------------------------------------------------
-	
+
 	public void listService71(HttpServletRequest request) {
-		
-			String[] months = request.getParameterValues("month");
-			if(months == null) {
-				months = new String[] {"1","2","3","4","5","6","7",
-						"8","9","10","11","12"};
-				}
-			List<List<VO>> list = new ArrayList<List<VO>>();
-			
-			for(int i = 0; i < months.length; i++) {
-				InnerVO invo = new InnerVO();
-				invo.setMonth(months[i]);
-				list.add(dao.selectlist71(invo)); //내가 선택한 달
-			}
-			request.setAttribute("list", list);
+
+		String[] months = request.getParameterValues("month");
+		if(months == null) {
+			months = new String[] {"1","2","3","4","5","6","7",
+					"8","9","10","11","12"};
+		}
+		List<List<VO>> list = new ArrayList<List<VO>>();
+
+		for(int i = 0; i < months.length; i++) {
+			InnerVO invo = new InnerVO();
+			invo.setMonth(months[i]);
+			list.add(dao.selectlist71(invo)); //내가 선택한 달
+		}
+		request.setAttribute("list", list);
 	}
 	//-------------------------------------------------
 	public void listService8(HttpServletRequest request) {
@@ -124,7 +124,7 @@ public class service1 {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void listService9(HttpServletRequest request) {
 		/*try {
 			if(request.getParameter("title") != null && request.getParameter("title")!="") {
@@ -140,9 +140,9 @@ public class service1 {
 		}*/
 		if(request.getParameter("title") != null &&
 				request.getParameter("title")!="") {
-			 request.setAttribute("list", dao.selectlist9("%" + request.getParameter("title")+ "%"));
+			request.setAttribute("list", dao.selectlist9("%" + request.getParameter("title")+ "%"));
 		} else {
-		request.setAttribute("list", dao.selectlist9(null));
+			request.setAttribute("list", dao.selectlist9(null));
 		}
 	}
 	public void listService10(HttpServletRequest request) {
@@ -153,5 +153,36 @@ public class service1 {
 		} 
 		request.setAttribute("list", dao.selectlist10(invo));
 	}
+
+	public void listService11(HttpServletRequest request) {
+		InnerVO invo = new InnerVO();
+		if(request.getParameter("order") != null &&
+				request.getParameter("order") !="") {
+			if(request.getParameter("order").equals("owner")) {
+				invo.setOwner(request.getParameter("input"));
+			} else if (request.getParameter("order").equals("content")) {
+				invo.setContent("%" + request.getParameter("input") + "%");
+			} else if (request.getParameter("order").equals("title")) {
+				invo.setTitle("%" + request.getParameter("input") + "%");
+			}
+		}
+		request.setAttribute("list", dao.selectlist11(invo));
+	}
 	
+	public void listService12(HttpServletRequest request) {
+		InnerVO invo = new InnerVO();
+		if(request.getParameter("title") != null &&
+				request.getParameter("title") !="") {
+			invo.setTitle("%" + request.getParameter("title") + "%");
+		}
+		if(request.getParameter("owner") != null &&
+				request.getParameter("owner") !="") {
+			invo.setOwner(request.getParameter("owner"));
+		}
+		if(request.getParameter("content") != null &&
+				request.getParameter("content") !="") {
+			invo.setContent("%" + request.getParameter("content") + "%");
+		}
+		request.setAttribute("list", dao.selectlist11(invo));
+	}
 }

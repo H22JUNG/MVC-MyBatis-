@@ -74,4 +74,19 @@
 			</if>
 		</where>
 	</select>
+	
+	<select id="selectlist11" parameterType="InnerVO" resultType="VO">
+		select id, category, title, content, owner, create_date from bbs
+		<where>
+			<if test="content != null">
+				and content like #{content}
+			</if>
+			<if test="owner != null">
+				and owner like #{owner}
+			</if>
+			<if test="title != null">
+				and title like #{title}
+			</if>
+		</where>
+	</select>
 </mapper>

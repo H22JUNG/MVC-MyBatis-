@@ -17,5 +17,6 @@ public interface DAO {
 	public List<VO> selectlist8(String name);
 	public List<VO> selectlist9(String title);
 	public List<VO> selectlist10(InnerVO vo);
+	public List<VO> selectlist11(InnerVO vo);
 
 }
