@@ -7,38 +7,40 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-body {
-	padding: 50px;
+* {
+	box-sizing : border-box;
+}
+
+
+main {
+	grid-area: main;
 }
 
 table {
-	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
+	width: 100%;
 }
 
-thead {
-	background-color: royalblue;
+table td, table th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+table tr:hover {
+	background-color: #ddd;
+}
+
+table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #0335fc;
 	color: white;
-}
-
-tbody tr:nth-child(even) {
-	background-color: #eee;
-}
-
-th {
-	text-align: left;
-	padding: 10px 5px 10px 5px;
-	border: 1px solid #ddd;
-}
-
-td {
-	text-align: left;
-	padding: 8px 5px 8px 5px;
-	border: 1px solid #ddd;
-}
-
-tbody>tr:hover {
-	background-color: #aaa;
 }
 </style>
 </head>
