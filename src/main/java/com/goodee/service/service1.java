@@ -126,6 +126,7 @@ public class service1 {
 	}
 
 	public void listService9(HttpServletRequest request) {
+		//리스트로 추가하기
 		/*try {
 			if(request.getParameter("title") != null && request.getParameter("title")!="") {
 				//뭐라도 입력이 되면 %% 붙여서 검색
@@ -138,6 +139,8 @@ public class service1 {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}*/
+		
+		//객체생성해서 하는 법
 		if(request.getParameter("title") != null &&
 				request.getParameter("title")!="") {
 			request.setAttribute("list", dao.selectlist9("%" + request.getParameter("title")+ "%"));
